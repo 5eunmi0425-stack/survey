@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 대한병원정보협회 춘계학술세미나</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      background: #eef2f7;
+      color: #1a2236;
+      min-height: 100vh;
+      padding-bottom: 60px;
+    }
+
+    /* ───── LAYOUT ───── */
+    .survey-wrap {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    /* ───── HEADER ───── */
+    .header-card {
+      background: linear-gradient(140deg, #003a96 0%, #1565d8 60%, #2979e0 100%);
+      border-radius: 20px;
+      padding: 36px 28px 30px;
+      color: #fff;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 32px rgba(0,58,150,0.22);
+    }
+    .header-logo {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      opacity: 0.75;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .event-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 30px;
+      padding: 5px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+    .header-title {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.45;
+      margin-bottom: 14px;
+    }
+    .header-desc {
+      font-size: 13.5px;
+      line-height: 1.8;
+      opacity: 0.9;
+    }
+    .header-meta {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+    .header-meta span {
+      background: rgba(255,255,255,0.15);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    /* ───── PROGRESS ───── */
+    .progress-wrap { margin-bottom: 16px; }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #718096;
+      margin-bottom: 6px;
+    }
+    .progress-bar-bg {
+      background: #dce3ef;
+      border-radius: 10px;
+      height: 6px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #003a96, #2979e0);
+      border-radius: 10px;
+      transition: width 0.5s ease;
+      width: 0%;
+    }
+
+    /* ───── CARDS ───── */
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 26px 22px;
+      margin-bottom: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+    .card-accent {
+      width: 4px;
+      height: 20px;
+      background: linear-gradient(180deg, #003a96, #2979e0);
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: #003a96;
+    }
+    .card-subtitle {
+      font-size: 12.5px;
+      color: #8898b3;
+      margin-bottom: 22px;
+      padding-left: 14px;
+    }
+
+    /* ───── PRIVACY BOX ───── */
+    .privacy-box {
+      background: #f0f5ff;
+      border: 1px solid #c5d7f9;
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: 12.5px;
+      line-height: 1.75;
+      color: #4a5568;
+      margin-bottom: 20px;
+    }
+    .privacy-box strong {
+      display: block;
+      color: #003a96;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .privacy-box ul { padding-left: 18px; }
+    .privacy-box li { margin-bottom: 5px; }
+    .privacy-note {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #c5d7f9;
+      font-size: 12px;
+      color: #718096;
+    }
+
+    /* ───── CONSENT BUTTONS ───── */
+    .consent-row {
+      display: flex;
+      gap: 10px;
+    }
+    .consent-btn {
+      flex: 1;
+      padding: 14px;
+      border: 2px solid #dce3ef;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s;
+      user-select: none;
+      background: #fff;
+    }
+    .consent-btn:hover { border-color: #a3bffa; }
+    .consent-btn.active-yes {
+      background: #003a96;
+      border-color: #003a96;
+      color: #fff;
+    }
+    .consent-btn.active-no {
+      background: #e53e3e;
+      border-color: #e53e3e;
+      color: #fff;
+    }
+    .consent-refused {
+      display: none;
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: #fff5f5;
+      border: 1px solid #fed7d7;
+      border-radius: 10px;
+      color: #c53030;
+      font-size: 13px;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* ───── SECTION LABEL ───── */
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      background: #eef2ff;
+      color: #003a96;
+      border-radius: 20px;
+      padding: 3px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ───── QUESTIONS ───── */
+    .question { margin-bottom: 26px; }
+    .question:last-child { margin-bottom: 0; }
+    .q-label {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1a2236;
+      margin-bottom: 10px;
+      line-height: 1.55;
+    }
+    .q-label .req { color: #e53e3e; margin-left: 3px; }
+    .q-hint {
+      font-size: 12px;
+      color: #8898b3;
+      margin-top: -6px;
+      margin-bottom: 10px;
+    }
+
+    /* ───── OPTIONS ───── */
+    .option-list { display: flex; flex-direction: column; gap: 7px; }
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 14px;
+      border: 1.5px solid #e5eaf2;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.18s;
+      background: #fff;
+      user-select: none;
+    }
+    .option-item:hover { border-color: #a3bffa; background: #f5f8ff; }
+    .option-item.sel { border-color: #003a96; background: #eef4ff; }
+    .option-item input[type="radio"],
+    .option-item input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      accent-color: #003a96;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .option-label { font-size: 13.5px; color: #2d3748; flex: 1; line-height: 1.4; }
+
+    /* ───── TEXT INPUTS ───── */
+    .text-input, .textarea-input, .other-input {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #e5eaf2;
+      border-radius: 10px;
+      font-size: 13.5px;
+      color: #2d3748;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+      background: #fafbff;
+    }
+    .text-input:focus, .textarea-input:focus, .other-input:focus {
+      border-color: #003a96;
+      box-shadow: 0 0 0 3px rgba(0,58,150,0.08);
+      background: #fff;
+    }
+    .textarea-input { resize: vertical; min-height: 100px; }
+    .other-input {
+      margin-top: 8px;
+      font-size: 13px;
+      display: none;
+    }
+
+    /* ───── CONDITIONAL BLOCK ───── */
+    .cond-block {
+      display: none;
+      margin-top: 14px;
+      padding: 16px 16px 16px 20px;
+      background: #f5f8ff;
+      border-left: 3px solid #2979e0;
+      border-radius: 0 12px 12px 0;
+    }
+    .cond-block.show { display: block; }
+    .cond-block .q-label { font-size: 13.5px; }
+
+    /* ───── MAX NOTICE ───── */
+    .max-notice {
+      font-size: 12px;
+      color: #dd6b20;
+      margin-top: 6px;
+      display: none;
+      font-weight: 600;
+    }
+    .max-notice.show { display: block; }
+
+    /* ───── ERROR ───── */
+    .err-msg {
+      font-size: 12px;
+      color: #e53e3e;
+      margin-top: 6px;
+      display: none;
+      font-weight: 600;
+    }
+    .err-msg.show { display: block; }
+
+    /* ───── DIVIDER ───── */
+    .q-divider {
+      height: 1px;
+      background: #eef2f7;
+      margin: 22px 0;
+    }
+
+    /* ───── SUBMIT ───── */
+    .submit-area { margin-top: 6px; }
+    .submit-btn {
+      width: 100%;
+      padding: 17px;
+      background: linear-gradient(135deg, #003a96 0%, #1565d8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+      letter-spacing: 0.5px;
+      box-shadow: 0 6px 20px rgba(0,58,150,0.3);
+    }
+    .submit-btn:hover { opacity: 0.93; transform: translateY(-1px); box-shadow: 0 10px 26px rgba(0,58,150,0.35); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; box-shadow: none; }
+    .submit-note {
+      text-align: center;
+      font-size: 11.5px;
+      color: #a0aec0;
+      margin-top: 10px;
+    }
+
+    /* ───── THANK YOU ───── */
+    .thank-you {
+      display: none;
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .thank-you.show { display: block; }
+    .ty-icon { font-size: 64px; margin-bottom: 20px; }
+    .ty-title { font-size: 24px; font-weight: 800; color: #003a96; margin-bottom: 12px; }
+    .ty-desc { font-size: 14.5px; color: #718096; line-height: 1.8; }
+    .ty-gift {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #003a96, #1565d8);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .next-btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 16px 36px;
+      background: #fff;
+      color: #003a96;
+      border: 2px solid #003a96;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .next-btn:hover {
+      background: #003a96;
+      color: #fff;
+    }
+
+    /* ───── RESPONSIVE ───── */
+    @media (max-width: 480px) {
+      .survey-wrap { padding: 14px 10px; }
+      .header-card { padding: 26px 18px 22px; }
+      .header-title { font-size: 19px; }
+      .card { padding: 20px 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="survey-wrap">
+
+  <!-- ═══ HEADER ═══ -->
+  <div class="header-card">
+    <div class="header-logo">DOUZONE · Medical Intelligence</div>
+    <div class="event-badge">📋 2026 대한병원정보협회 춘계학술세미나</div>
+    <div class="header-title">더존비즈온 의료 AI 솔루션<br>관심도 및 현황 조사</div>
+    <div class="header-desc">
+      안녕하세요. 더존비즈온 메디컬인텔리전스사업부문입니다.<br>
+      바쁘신 일정에도 저희 부스를 방문해 주셔서 진심으로 감사드립니다.<br>
+      본 설문은 의료 현장의 니즈를 파악하고 더 나은 솔루션을 제공하기 위해 진행됩니다.
+    </div>
+    <div class="header-meta">
+      <span>⏱ 소요 약 2~3분</span>
+      <span>🎁 설문 완료 시 답례품 증정</span>
+    </div>
+  </div>
+
+  <!-- ═══ PROGRESS ═══ -->
+  <div class="progress-wrap" id="progress-wrap" style="display:none;">
+    <div class="progress-label">
+      <span id="progress-text">응답 진행 중</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 0: 개인정보 동의 ═══ -->
+  <div class="card" id="card-privacy">
+    <div class="card-header">
+      <div class="card-accent"></div>
+      <div class="card-title">개인정보 수집 및 이용 동의</div>
+    </div>
+    <div class="card-subtitle">설문 참여 전 아래 내용을 반드시 확인해 주세요</div>
+
+    <div class="privacy-box">
+      <strong>개인정보 수집 및 이용 동의 안내</strong>
+      <ul>
+        <li><b>수집·이용 목적</b>: 답례품 지급 및 더존비즈온 헬스케어 서비스 도입 관련 상담</li>
+        <li><b>수집 항목</b>: 이름(필수), 소속(필수), 이메일(필수), 연락처(선택)</li>
+        <li><b>보유 및 이용 기간</b>: 상담 종료일로부터 3개월 이내 파기</li>
+        <li><b>개인정보 처리자</b>: 더존비즈온</li>
+      </ul>
+      <div class="privacy-note">
+        ※ 개인정보 수집 및 이용에 동의를 거부할 수 있으며, 거부 시 이벤트 참여와 상담 진행이 제한됩니다.<br>
+        ※ 제공된 개인정보는 본 목적 이외에는 활용되지 않습니다.
+      </div>
+    </div>
+
+    <div class="q-label">위 내용에 동의하십니까? <span class="req">*</span></div>
+    <div class="consent-row">
+      <div class="consent-btn" id="btn-yes" onclick="handleConsent(true)">✓ 예, 동의합니다</div>
+      <div class="consent-btn" id="btn-no" onclick="handleConsent(false)">✗ 아니오</div>
+    </div>
+    <div class="consent-refused" id="consent-refused">
+      개인정보 수집에 동의하지 않으셔서 설문 참여가 제한됩니다.<br>방문해 주셔서 감사합니다.
+    </div>
+  </div>
+
+  <!-- ═══ SURVEY FORM ═══ -->
+  <form id="survey-form" style="display:none;" onsubmit="submitSurvey(event)" novalidate>
+
+    <!-- SECTION 1: 기본 정보 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-accent"></div>
+        <div class="card-title">응답자 기본 정보</div>
+      </div>
+      <div class="card-subtitle">답례품 지급 및 추가 안내에 활용됩니다</div>
+      <div class="section-badge">SECTION 01</div>
+
+      <div class="question">
+        <div class="q-label">1. 성함 <span class="req">*</span></div>
+        <input type="text" class="text-input" id="f-name" placeholder="홍길동" autocomplete="name">
+        <div class="err-msg" id="e-name">성함을 입력해 주세요.</div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">2. 소속 기관명 <span class="req">*</span></div>
+        <input type="text" class="text-input" id="f-org" placeholder="예) 서울대학교병원" autocomplete="organization">
+        <div class="err-msg" id="e-org">소속 기관명을 입력해 주세요.</div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">3. 이메일 <span class="req">*</span></div>
+        <input type="email" class="text-input" id="f-email" placeholder="example@hospital.com" autocomplete="email">
+        <div class="err-msg" id="e-email">올바른 이메일 주소를 입력해 주세요.</div>
+      </div>
+
+      <div class="question">
+        <div class="q-label">4. 연락처 <span style="font-weight:400;font-size:12px;color:#8898b3;">(선택)</span></div>
+        <input type="tel" class="text-input" id="f-phone" placeholder="010-0000-0000" autocomplete="tel">
+      </div>
+    </div>
+
+    <!-- SECTION 2: 프로파일 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-accent"></div>
+        <div class="card-title">응답자 프로파일</div>
+      </div>
+      <div class="card-subtitle">통계 분류 목적으로 활용됩니다</div>
+      <div class="section-badge">SECTION 02</div>
+
+      <div class="question">
+        <div class="q-label">5. 귀하가 속한 기관의 유형은 무엇입니까? <span class="req">*</span></div>
+        <div class="option-list" id="list-q5">
+          <label class="option-item"><input type="radio" name="q5" value="상급종합병원"><span class="option-label">상급종합병원</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="종합병원"><span class="option-label">종합병원</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="병원·요양병원"><span class="option-label">병원·요양병원</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="의원·클리닉"><span class="option-label">의원·클리닉</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="연구소·대학교"><span class="option-label">연구소·대학교</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="의료IT기업"><span class="option-label">의료IT기업</span></label>
+          <label class="option-item"><input type="radio" name="q5" value="기타" id="q5-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
+        </div>
+        <input type="text" class="other-input" id="q5-other" placeholder="기관 유형을 입력해 주세요">
+        <div class="err-msg" id="e-q5">기관 유형을 선택해 주세요.</div>
+      </div>
+
+      <div class="q-divider"></div>
+
+      <div class="question">
+        <div class="q-label">6. 귀하의 직무 및 역할은 무엇입니까? <span class="req">*</span></div>
+        <div class="option-list" id="list-q6">
+          <label class="option-item"><input type="radio" name="q6" value="의사"><span class="option-label">의사</span></label>
+          <label class="option-item"><input type="radio" name="q6" value="간호사"><span class="option-label">간호사</span></label>
+          <label class="option-item"><input type="radio" name="q6" value="의료기사"><span class="option-label">의료기사</span></label>
+          <label class="option-item"><input type="radio" name="q6" value="행정·운영"><span class="option-label">행정·운영</span></label>
+          <label class="option-item"><input type="radio" name="q6" value="IT·전산"><span class="option-label">IT·전산</span></label>
+          <label class="option-item"><input type="radio" name="q6" value="연구·교육"><span class="option-label">연구·교육</span></label>
+          <label class="option-item"><input type="radio" name="q6" value="기타"><span class="option-label">기타 (직접 입력)</span></label>
+        </div>
+        <input type="text" class="other-input" id="q6-other" placeholder="직무를 입력해 주세요">
+        <div class="err-msg" id="e-q6">직무를 선택해 주세요.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 3: 서비스 현황 + VOC -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-accent"></div>
+        <div class="card-title">현재 서비스 활용 현황 및 개선 니즈</div>
+      </div>
+      <div class="card-subtitle">귀 기관의 현재 도입 현황과 불편 사항을 파악합니다</div>
+      <div class="section-badge">SECTION 03</div>
+
+      <div class="question">
+        <div class="q-label">7. 현재 귀 기관에서 사용 중인 서비스를 모두 선택해 주세요. <span class="req">*</span></div>
+        <div class="q-hint">복수 선택 가능 / 벤더 무관하게 해당 유형의 서비스를 사용 중인 경우 모두 선택</div>
+        <div class="option-list" id="list-q7">
+          <label class="option-item"><input type="checkbox" name="q7" value="EMR/HIS (전자의무기록/병원정보시스템)"><span class="option-label">EMR/HIS (전자의무기록/병원정보시스템)</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="PACS (의료영상저장전송시스템)"><span class="option-label">PACS (의료영상저장전송시스템)</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="OCS (처방전달시스템)"><span class="option-label">OCS (처방전달시스템)</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="CDW/데이터 플랫폼 (임상데이터 수집·분석)"><span class="option-label">CDW/데이터 플랫폼 (임상데이터 수집·분석)</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="BI/경영분석 대시보드"><span class="option-label">BI/경영분석 대시보드</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="AI 진단보조 솔루션"><span class="option-label">AI 진단보조 솔루션</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="간호 인력관리/스케줄링 시스템"><span class="option-label">간호 인력관리/스케줄링 시스템</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="IRB/DRB 연구심의 시스템"><span class="option-label">IRB/DRB 연구심의 시스템</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="ERP/그룹웨어"><span class="option-label">ERP/그룹웨어</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="없음" id="q7-none"><span class="option-label">없음 (사용 중인 서비스 없음)</span></label>
+        </div>
+        <div class="err-msg" id="e-q7">하나 이상 선택해 주세요.</div>
+      </div>
+
+      <!-- Q7-1 조건부: 서비스 사용 중인 경우 -->
+      <div class="cond-block" id="cond-q71">
+        <div class="question">
+          <div class="q-label">7-1. 현재 사용 중인 서비스에서 불편하거나 개선이 필요한 점은 무엇인가요?</div>
+          <div class="q-hint">복수 선택 가능 (솔루션 개선에 직접 반영됩니다)</div>
+          <div class="option-list">
+            <label class="option-item"><input type="checkbox" name="q71" value="UI/UX가 직관적이지 않음"><span class="option-label">UI/UX가 직관적이지 않음</span></label>
+            <label class="option-item"><input type="checkbox" name="q71" value="타 시스템(EMR, OCS 등)과의 연계 문제"><span class="option-label">타 시스템(EMR, OCS 등)과의 연계 문제</span></label>
+            <label class="option-item"><input type="checkbox" name="q71" value="데이터 입력·수작업 많고 업무 효율 저하"><span class="option-label">데이터 입력·수작업이 많아 업무 효율 저하</span></label>
+            <label class="option-item"><input type="checkbox" name="q71" value="통계·분석 기능 부족 또는 시각화 미흡"><span class="option-label">통계·분석 기능 부족 또는 시각화 미흡</span></label>
+            <label class="option-item"><input type="checkbox" name="q71" value="사용자 교육·매뉴얼 부족"><span class="option-label">사용자 교육·매뉴얼 부족</span></label>
+            <label class="option-item"><input type="checkbox" name="q71" value="성능(속도, 안정성) 문제"><span class="option-label">성능(속도, 안정성) 문제</span></label>
+            <label class="option-item"><input type="checkbox" name="q71" value="기타" id="q71-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
+          </div>
+          <input type="text" class="other-input" id="q71-other" placeholder="기타 불편 사항을 입력해 주세요">
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4: AI 활용 현황 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-accent"></div>
+        <div class="card-title">AI 활용 현황 및 기대 효과</div>
+      </div>
+      <div class="card-subtitle">AI 솔루션 도입 현황과 장애요인·기대효과를 파악합니다</div>
+      <div class="section-badge">SECTION 04</div>
+
+      <div class="question">
+        <div class="q-label">8. 현재 업무에서 AI 기반 서비스를 어느 정도 활용하고 계시나요? <span class="req">*</span></div>
+        <div class="option-list" id="list-q8">
+          <label class="option-item"><input type="radio" name="q8" value="매우 적극적으로 활용"><span class="option-label">매우 적극적으로 활용하고 있다</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="일부 제한적으로 활용"><span class="option-label">일부 업무에서 제한적으로 활용하고 있다</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="도입했으나 활용 미미"><span class="option-label">도입은 했으나 실제 활용은 미미하다</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="현재 미활용"><span class="option-label">현재 활용하고 있지 않다</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="잘 모르겠다"><span class="option-label">잘 모르겠다 / 아직 검토 전이다</span></label>
+        </div>
+        <div class="err-msg" id="e-q8">AI 활용 정도를 선택해 주세요.</div>
+      </div>
+
+      <!-- Q8-1 조건부: AI 활용 중인 경우 -->
+      <div class="cond-block" id="cond-q81">
+        <div class="question">
+          <div class="q-label">8-1. 어떤 분야에서 AI를 활용하고 계신가요? <span style="font-weight:400;font-size:12px;color:#8898b3;">(복수 선택)</span></div>
+          <div class="option-list">
+            <label class="option-item"><input type="checkbox" name="q81" value="진료 지원(영상 판독, 진단 보조, 의무기록 요약 등)"><span class="option-label">진료 지원 (영상 판독, 진단 보조, 의무기록 요약 등)</span></label>
+            <label class="option-item"><input type="checkbox" name="q81" value="행정·운영 자동화(문서 요약, 예약/접수 자동화 등)"><span class="option-label">행정·운영 자동화 (문서 요약, 예약/접수 자동화 등)</span></label>
+            <label class="option-item"><input type="checkbox" name="q81" value="병원 경영 지원(경영지표 분석, 운영 최적화)"><span class="option-label">병원 경영 지원 (경영지표 분석, 운영 최적화)</span></label>
+            <label class="option-item"><input type="checkbox" name="q81" value="연구·분석(논문 작성, 임상/데이터 분석 등)"><span class="option-label">연구·분석 (논문 작성, 임상/데이터 분석 등)</span></label>
+            <label class="option-item"><input type="checkbox" name="q81" value="기타" id="q81-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
+          </div>
+          <input type="text" class="other-input" id="q81-other" placeholder="기타 AI 활용 분야를 입력해 주세요">
+        </div>
+      </div>
+
+      <!-- Q8-2 조건부: AI 미활용 / 활용 미미인 경우 -->
+      <div class="cond-block" id="cond-q82">
+        <div class="question">
+          <div class="q-label">8-2. AI 서비스 도입·활용의 가장 큰 장애요인은 무엇인가요? <span style="font-weight:400;font-size:12px;color:#8898b3;">(복수 선택)</span></div>
+          <div class="option-list">
+            <label class="option-item"><input type="checkbox" name="q82" value="보안·개인정보 이슈로 사용 제한"><span class="option-label">보안·개인정보 이슈로 사용이 제한됨</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="기존 시스템과의 연동 어려움"><span class="option-label">기존 시스템과의 연동 어려움</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="도입 효과에 대한 확신 부족"><span class="option-label">도입 효과에 대한 확신 부족</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="AI 관련 내부 역량·인력 부족"><span class="option-label">AI 관련 내부 역량·인력 부족</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="비용 및 예산 문제"><span class="option-label">비용 및 예산 문제</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="기관 내부 승인 절차 복잡"><span class="option-label">기관 내부 승인 절차가 복잡함</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="기타" id="q82-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
+          </div>
+          <input type="text" class="other-input" id="q82-other" placeholder="기타 장애요인을 입력해 주세요">
+        </div>
+      </div>
+
+      <div class="q-divider"></div>
+
+      <!-- Q8-3 전체 노출 -->
+      <div class="question">
+        <div class="q-label">8-3. AI 솔루션 도입 시 가장 기대되는 효과는 무엇인가요?</div>
+        <div class="q-hint">최대 2개 선택</div>
+        <div class="option-list" id="list-q83">
+          <label class="option-item"><input type="checkbox" name="q83" value="반복 업무 자동화로 업무 효율 향상"><span class="option-label">반복 업무 자동화로 업무 효율 향상</span></label>
+          <label class="option-item"><input type="checkbox" name="q83" value="데이터 기반 의사결정 지원"><span class="option-label">데이터 기반 의사결정 지원</span></label>
+          <label class="option-item"><input type="checkbox" name="q83" value="임상·연구 품질 향상"><span class="option-label">임상·연구 품질 향상</span></label>
+          <label class="option-item"><input type="checkbox" name="q83" value="인력 운영 최적화"><span class="option-label">인력 운영 최적화</span></label>
+          <label class="option-item"><input type="checkbox" name="q83" value="환자 서비스 개선"><span class="option-label">환자 서비스 개선</span></label>
+          <label class="option-item"><input type="checkbox" name="q83" value="기타" id="q83-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
+        </div>
+        <input type="text" class="other-input" id="q83-other" placeholder="기타 기대 효과를 입력해 주세요">
+        <div class="max-notice" id="max-q83">⚠ 최대 2개까지만 선택할 수 있습니다.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 5: 관심 솔루션 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-accent"></div>
+        <div class="card-title">관심 솔루션 및 도입 고려요소</div>
+      </div>
+      <div class="card-subtitle">오늘 부스 방문을 통해 파악된 관심사를 확인합니다</div>
+      <div class="section-badge">SECTION 05</div>
+
+      <div class="question">
+        <div class="q-label">9. 오늘 부스에서 가장 관심이 생긴 솔루션을 선택해 주세요. <span class="req">*</span></div>
+        <div class="q-hint">최대 2개 선택</div>
+        <div class="option-list" id="list-q9">
+          <label class="option-item"><input type="checkbox" name="q9" value="정밀의료 빅데이터 플랫폼"><span class="option-label">정밀의료 빅데이터 플랫폼</span></label>
+          <label class="option-item"><input type="checkbox" name="q9" value="CDW (임상데이터웨어하우스)"><span class="option-label">CDW (임상데이터웨어하우스)</span></label>
+          <label class="option-item"><input type="checkbox" name="q9" value="MRP (의료자원계획)"><span class="option-label">MRP (의료자원계획)</span></label>
+          <label class="option-item"><input type="checkbox" name="q9" value="ONE AI"><span class="option-label">ONE AI</span></label>
+          <label class="option-item"><input type="checkbox" name="q9" value="AI 간호스케줄러"><span class="option-label">AI 간호스케줄러</span></label>
+        </div>
+        <div class="max-notice" id="max-q9">⚠ 최대 2개까지만 선택할 수 있습니다.</div>
+        <div class="err-msg" id="e-q9">관심 솔루션을 1개 이상 선택해 주세요.</div>
+      </div>
+
+      <div class="q-divider"></div>
+
+      <div class="question">
+        <div class="q-label">10. 솔루션 도입 시 가장 중요하게 고려하는 요소는 무엇인가요? <span class="req">*</span></div>
+        <div class="q-hint">복수 선택 가능</div>
+        <div class="option-list" id="list-q10">
+          <label class="option-item"><input type="checkbox" name="q10" value="보안·인증"><span class="option-label">보안·인증</span></label>
+          <label class="option-item"><input type="checkbox" name="q10" value="기존 시스템 연계 용이성"><span class="option-label">기존 시스템 연계 용이성</span></label>
+          <label class="option-item"><input type="checkbox" name="q10" value="비용 및 ROI"><span class="option-label">비용 및 ROI</span></label>
+          <label class="option-item"><input type="checkbox" name="q10" value="도입 효과 검증 가능 여부"><span class="option-label">도입 효과 검증 가능 여부</span></label>
+          <label class="option-item"><input type="checkbox" name="q10" value="내부 운영 인력 확보"><span class="option-label">내부 운영 인력 확보</span></label>
+          <label class="option-item"><input type="checkbox" name="q10" value="규제 준수·기관 승인"><span class="option-label">규제 준수·기관 승인</span></label>
+          <label class="option-item"><input type="checkbox" name="q10" value="기타" id="q10-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
+        </div>
+        <input type="text" class="other-input" id="q10-other" placeholder="기타 고려요소를 입력해 주세요">
+        <div class="err-msg" id="e-q10">고려요소를 1개 이상 선택해 주세요.</div>
+      </div>
+    </div>
+
+    <!-- SECTION 6: 후속 상담 -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-accent"></div>
+        <div class="card-title">후속 상담 및 안내</div>
+      </div>
+      <div class="card-subtitle">관심 있는 솔루션에 대해 더 자세한 안내를 드립니다</div>
+      <div class="section-badge">SECTION 06</div>
+
+      <div class="question">
+        <div class="q-label">11. 더존비즈온 솔루션에 대한 추가 안내를 받아보시겠습니까? <span class="req">*</span></div>
+        <div class="option-list" id="list-q11">
+          <label class="option-item"><input type="radio" name="q11" value="담당자 연락 요청"><span class="option-label">네, 담당자 연락 요청드립니다</span></label>
+          <label class="option-item"><input type="radio" name="q11" value="자료만 이메일 수신"><span class="option-label">자료만 이메일로 받겠습니다</span></label>
+          <label class="option-item"><input type="radio" name="q11" value="불필요"><span class="option-label">아니오, 괜찮습니다</span></label>
+        </div>
+        <div class="err-msg" id="e-q11">항목을 선택해 주세요.</div>
+      </div>
+
+      <div class="q-divider"></div>
+
+      <div class="question">
+        <div class="q-label">12. 기타 의견 및 건의 사항 <span style="font-weight:400;font-size:12px;color:#8898b3;">(선택)</span></div>
+        <div class="q-hint">솔루션 개선 아이디어, 현장 니즈, 요청 사항 등 자유롭게 남겨주세요</div>
+        <textarea class="textarea-input" id="f-comment" placeholder="자유롭게 의견을 남겨주세요..."></textarea>
+      </div>
+    </div>
+
+    <!-- SUBMIT -->
+    <div class="submit-area">
+      <button type="submit" class="submit-btn" id="submit-btn">설문 제출하기 →</button>
+      <div class="submit-note">* 표시 항목은 필수 입력 사항입니다</div>
+    </div>
+
+  </form>
+
+  <!-- ═══ THANK YOU ═══ -->
+  <div class="thank-you" id="thank-you">
+    <div class="ty-icon">🎉</div>
+    <div class="ty-title">설문 참여 감사합니다!</div>
+    <div class="ty-desc">
+      소중한 의견은 더존비즈온 의료 AI 솔루션<br>발전에 적극 반영하겠습니다.<br><br>
+      보다 나은 의료 환경을 함께 만들어갈 수 있도록<br>최선을 다하겠습니다.
+    </div>
+    <div class="ty-gift">🎁 부스 직원에게 화면을 보여주시면 답례품을 드립니다</div>
+    <button class="next-btn" onclick="resetSurvey()">다음 분 설문 시작 →</button>
+  </div>
+
+</div><!-- /survey-wrap -->
+
+<!-- ═══════════════════════════════════════════════
+     GOOGLE APPS SCRIPT 연동 설정 안내
+     ───────────────────────────────────────────────
+  1. Google Sheets 새 스프레드시트 생성
+  2. 확장 프로그램 > Apps Script 열기
+  3. 아래 코드 전체를 붙여넣기
+
+  function doPost(e) {
+    try {
+      var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      var data = JSON.parse(e.postData.contents);
+      var headers = ['제출일시','성함','소속기관','이메일','연락처','기관유형','직무',
+        '사용중서비스','서비스불편사항','AI활용정도','AI활용분야','AI장애요인',
+        'AI기대효과','관심솔루션','도입고려요소','추가안내','자유의견'];
+      if (sheet.getLastRow() === 0) sheet.appendRow(headers);
+      sheet.appendRow([
+        data.timestamp, data.name, data.org, data.email, data.phone,
+        data.orgType, data.role, data.currentServices, data.serviceIssues,
+        data.aiUsage, data.aiAreas, data.aiBarriers, data.aiExpectations,
+        data.interestedSolutions, data.adoptionFactors, data.followUp, data.freeComment
+      ]);
+      return ContentService.createTextOutput('OK').setMimeType(ContentService.MimeType.TEXT);
+    } catch(err) {
+      return ContentService.createTextOutput('ERROR:' + err).setMimeType(ContentService.MimeType.TEXT);
+    }
+  }
+
+  4. 저장 후 배포 > 새 배포 > 유형: 웹 앱
+     - 다음 사용자로 실행: 나
+     - 액세스 권한: 모든 사용자
+  5. 배포 URL을 복사하여 아래 SHEETS_URL 변수에 붙여넣기
+═══════════════════════════════════════════════ -->
+
+<script>
+  // ── Google Sheets 연동 URL ──
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzV8ILkHbnz-K7CfsVh2-K8nIaSUW5NI8Xxl7_tMCEVPQSd8aka4ICiT4uszyHGDEbdsw/exec';
+
+  // ── 저장될 시트 탭 이름 ──────────────────────────────────────
+  //  페이지 <title> 태그를 자동으로 읽어 탭 이름으로 사용합니다.
+  //  새 설문지를 만들 때 <title>만 바꾸면 새 탭에 자동 저장됩니다.
+  //  Apps Script는 건드리지 않아도 됩니다.
+  // ────────────────────────────────────────────────────────────
+  const SURVEY_SHEET_NAME = document.title;
+
+  // ── 진행률 추적 ──
+  const REQUIRED_IDS = ['f-name','f-org','f-email','q5','q6','q7','q8','q9','q10','q11'];
+  function updateProgress() {
+    let filled = 0;
+    if (document.getElementById('f-name').value.trim()) filled++;
+    if (document.getElementById('f-org').value.trim()) filled++;
+    if (document.getElementById('f-email').value.trim()) filled++;
+    if (document.querySelector('input[name="q5"]:checked')) filled++;
+    if (document.querySelector('input[name="q6"]:checked')) filled++;
+    if (document.querySelectorAll('input[name="q7"]:checked').length) filled++;
+    if (document.querySelector('input[name="q8"]:checked')) filled++;
+    if (document.querySelectorAll('input[name="q9"]:checked').length) filled++;
+    if (document.querySelectorAll('input[name="q10"]:checked').length) filled++;
+    if (document.querySelector('input[name="q11"]:checked')) filled++;
+    const pct = Math.round((filled / REQUIRED_IDS.length) * 100);
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-pct').textContent = pct + '%';
+    document.getElementById('progress-text').textContent = pct === 100 ? '✅ 모든 필수 항목 완료' : '응답 진행 중';
+  }
+
+  // ── 동의 처리 ──
+  function handleConsent(agreed) {
+    const btnYes = document.getElementById('btn-yes');
+    const btnNo  = document.getElementById('btn-no');
+    const form   = document.getElementById('survey-form');
+    const refused= document.getElementById('consent-refused');
+    const prog   = document.getElementById('progress-wrap');
+
+    if (agreed) {
+      btnYes.className = 'consent-btn active-yes';
+      btnNo.className  = 'consent-btn';
+      form.style.display = 'block';
+      prog.style.display = 'block';
+      refused.style.display = 'none';
+      setTimeout(() => form.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    } else {
+      btnNo.className  = 'consent-btn active-no';
+      btnYes.className = 'consent-btn';
+      form.style.display = 'none';
+      prog.style.display = 'none';
+      refused.style.display = 'block';
+    }
+  }
+
+  // ── 체크박스/라디오 selected 클래스 ──
+  document.addEventListener('change', function(e) {
+    const input = e.target;
+    if (!input.matches('input[type="radio"], input[type="checkbox"]')) return;
+
+    // 선택 스타일
+    if (input.type === 'radio') {
+      document.querySelectorAll(`input[name="${input.name}"]`).forEach(r =>
+        r.closest('.option-item').classList.remove('sel'));
+      if (input.checked) input.closest('.option-item').classList.add('sel');
+    } else {
+      input.closest('.option-item').classList.toggle('sel', input.checked);
+    }
+
+    // Q5 기타 텍스트
+    if (input.name === 'q5') {
+      document.getElementById('q5-other').style.display =
+        (input.value === '기타' && input.checked) ? 'block' : 'none';
+    }
+
+    // Q6 기타 텍스트
+    if (input.name === 'q6') {
+      document.getElementById('q6-other').style.display =
+        (input.value === '기타' && input.checked) ? 'block' : 'none';
+    }
+
+    // Q7: 없음 상호배타 + 조건부 Q7-1
+    if (input.name === 'q7') {
+      if (input.value === '없음' && input.checked) {
+        document.querySelectorAll('input[name="q7"]').forEach(c => {
+          if (c.value !== '없음') { c.checked = false; c.closest('.option-item').classList.remove('sel'); }
+        });
+      } else if (input.value !== '없음' && input.checked) {
+        const none = document.getElementById('q7-none');
+        none.checked = false; none.closest('.option-item').classList.remove('sel');
+      }
+      const hasService = [...document.querySelectorAll('input[name="q7"]:checked')]
+        .some(c => c.value !== '없음');
+      document.getElementById('cond-q71').classList.toggle('show', hasService);
+    }
+
+    // Q7-1 기타
+    if (input.name === 'q71' && input.value === '기타')
+      document.getElementById('q71-other').style.display = input.checked ? 'block' : 'none';
+
+    // Q8: AI 활용 정도 → 조건부 Q8-1 / Q8-2 (둘 중 하나만 노출, 전환 시 반대쪽 초기화)
+    if (input.name === 'q8') {
+      const active   = (input.value === '매우 적극적으로 활용' || input.value === '일부 제한적으로 활용');
+      const inactive = (input.value === '도입했으나 활용 미미' || input.value === '현재 미활용');
+
+      // 8-1 노출/초기화
+      document.getElementById('cond-q81').classList.toggle('show', active);
+      if (!active) {
+        document.querySelectorAll('input[name="q81"]').forEach(c => {
+          c.checked = false;
+          c.closest('.option-item').classList.remove('sel');
+        });
+        document.getElementById('q81-other').style.display = 'none';
+        document.getElementById('q81-other').value = '';
+      }
+
+      // 8-2 노출/초기화
+      document.getElementById('cond-q82').classList.toggle('show', inactive);
+      if (!inactive) {
+        document.querySelectorAll('input[name="q82"]').forEach(c => {
+          c.checked = false;
+          c.closest('.option-item').classList.remove('sel');
+        });
+        document.getElementById('q82-other').style.display = 'none';
+        document.getElementById('q82-other').value = '';
+      }
+    }
+
+    // Q8-1 기타
+    if (input.name === 'q81' && input.value === '기타')
+      document.getElementById('q81-other').style.display = input.checked ? 'block' : 'none';
+
+    // Q8-2 기타
+    if (input.name === 'q82' && input.value === '기타')
+      document.getElementById('q82-other').style.display = input.checked ? 'block' : 'none';
+
+    // Q8-3 최대 2개: 2개 선택 후 추가 선택 시 체크 자체를 막음
+    if (input.name === 'q83') {
+      if (input.checked) {
+        const checked83 = document.querySelectorAll('input[name="q83"]:checked');
+        if (checked83.length > 2) {
+          // 방금 체크한 것을 즉시 해제
+          input.checked = false;
+          input.closest('.option-item').classList.remove('sel');
+          const notice = document.getElementById('max-q83');
+          notice.classList.add('show');
+          setTimeout(() => notice.classList.remove('show'), 2200);
+          return; // 이후 처리 중단
+        }
+      }
+      if (input.value === '기타')
+        document.getElementById('q83-other').style.display = input.checked ? 'block' : 'none';
+    }
+
+    // Q9 최대 2개
+    if (input.name === 'q9') enforceMax('q9', 2, 'max-q9');
+
+    // Q10 기타
+    if (input.name === 'q10' && input.value === '기타')
+      document.getElementById('q10-other').style.display = input.checked ? 'block' : 'none';
+
+    updateProgress();
+  });
+
+  // 텍스트 입력 시 진행률 업데이트
+  ['f-name','f-org','f-email'].forEach(id => {
+    document.getElementById(id).addEventListener('input', updateProgress);
+  });
+
+  function enforceMax(name, max, noticeId) {
+    const checked = document.querySelectorAll(`input[name="${name}"]:checked`);
+    if (checked.length > max) {
+      // 마지막 체크 해제
+      const last = document.querySelector(`input[name="${name}"]:checked:last-of-type`) ||
+                   checked[checked.length - 1];
+      last.checked = false;
+      last.closest('.option-item').classList.remove('sel');
+      const notice = document.getElementById(noticeId);
+      notice.classList.add('show');
+      setTimeout(() => notice.classList.remove('show'), 2200);
+    }
+  }
+
+  // ── 유효성 검사 ──
+  function showErr(id, show) {
+    document.getElementById(id)?.classList.toggle('show', show);
+  }
+
+  function validateForm() {
+    let ok = true;
+    const name = document.getElementById('f-name').value.trim();
+    showErr('e-name', !name); if (!name) ok = false;
+
+    const org = document.getElementById('f-org').value.trim();
+    showErr('e-org', !org); if (!org) ok = false;
+
+    const email = document.getElementById('f-email').value.trim();
+    const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    showErr('e-email', !validEmail); if (!validEmail) ok = false;
+
+    const q5 = document.querySelector('input[name="q5"]:checked');
+    showErr('e-q5', !q5); if (!q5) ok = false;
+
+    const q6 = document.querySelector('input[name="q6"]:checked');
+    showErr('e-q6', !q6); if (!q6) ok = false;
+
+    const q7 = document.querySelectorAll('input[name="q7"]:checked').length;
+    showErr('e-q7', !q7); if (!q7) ok = false;
+
+    const q8 = document.querySelector('input[name="q8"]:checked');
+    showErr('e-q8', !q8); if (!q8) ok = false;
+
+    const q9 = document.querySelectorAll('input[name="q9"]:checked').length;
+    showErr('e-q9', !q9); if (!q9) ok = false;
+
+    const q10 = document.querySelectorAll('input[name="q10"]:checked').length;
+    showErr('e-q10', !q10); if (!q10) ok = false;
+
+    const q11 = document.querySelector('input[name="q11"]:checked');
+    showErr('e-q11', !q11); if (!q11) ok = false;
+
+    return ok;
+  }
+
+  // ── 체크박스 값 수집 ──
+  function getChecked(name) {
+    return [...document.querySelectorAll(`input[name="${name}"]:checked`)]
+      .map(c => c.value).join(' / ') || '-';
+  }
+  function getCheckedWithOther(name, otherId) {
+    let vals = [...document.querySelectorAll(`input[name="${name}"]:checked`)]
+      .map(c => c.value);
+    const otherEl = document.getElementById(otherId);
+    if (vals.includes('기타') && otherEl && otherEl.value.trim()) {
+      vals = vals.map(v => v === '기타' ? `기타(${otherEl.value.trim()})` : v);
+    }
+    return vals.join(' / ') || '-';
+  }
+
+  // ══════════════════════════════════════════════════════════
+  //  질문-답변 정의 테이블
+  //  질문 텍스트를 수정하면 구글 시트 헤더도 자동으로 바뀝니다.
+  //  Apps Script는 건드리지 않아도 됩니다.
+  // ══════════════════════════════════════════════════════════
+  const QUESTIONS = [
+    {
+      header : '제출일시',
+      getValue: () => new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' })
+    },
+    {
+      header : '1. 성함',
+      getValue: () => document.getElementById('f-name').value.trim()
+    },
+    {
+      header : '2. 소속 기관명',
+      getValue: () => document.getElementById('f-org').value.trim()
+    },
+    {
+      header : '3. 이메일',
+      getValue: () => document.getElementById('f-email').value.trim()
+    },
+    {
+      header : '4. 연락처',
+      getValue: () => document.getElementById('f-phone').value.trim() || '-'
+    },
+    {
+      header : '5. 귀하가 속한 기관의 유형은 무엇입니까?',
+      getValue: () => {
+        const val   = document.querySelector('input[name="q5"]:checked')?.value || '-';
+        const other = document.getElementById('q5-other').value.trim();
+        return (val === '기타' && other) ? `기타(${other})` : val;
+      }
+    },
+    {
+      header : '6. 귀하의 직무 및 역할은 무엇입니까?',
+      getValue: () => {
+        const val   = document.querySelector('input[name="q6"]:checked')?.value || '-';
+        const other = document.getElementById('q6-other').value.trim();
+        return (val === '기타' && other) ? `기타(${other})` : val;
+      }
+    },
+    {
+      header : '7. 현재 귀 기관에서 사용 중인 서비스를 모두 선택해 주세요.',
+      getValue: () => getChecked('q7')
+    },
+    {
+      header : '7-1. 현재 사용 중인 서비스에서 불편하거나 개선이 필요한 점은 무엇인가요?',
+      getValue: () => getCheckedWithOther('q71', 'q71-other')
+    },
+    {
+      header : '8. 현재 업무에서 AI 기반 서비스를 어느 정도 활용하고 계시나요?',
+      getValue: () => document.querySelector('input[name="q8"]:checked')?.value || '-'
+    },
+    {
+      header : '8-1. 어떤 분야에서 AI를 활용하고 계신가요?',
+      getValue: () => getCheckedWithOther('q81', 'q81-other')
+    },
+    {
+      header : '8-2. AI 서비스 도입·활용의 가장 큰 장애요인은 무엇인가요?',
+      getValue: () => getCheckedWithOther('q82', 'q82-other')
+    },
+    {
+      header : '8-3. AI 솔루션 도입 시 가장 기대되는 효과는 무엇인가요?',
+      getValue: () => getCheckedWithOther('q83', 'q83-other')
+    },
+    {
+      header : '9. 오늘 부스에서 가장 관심이 생긴 솔루션을 선택해 주세요.',
+      getValue: () => getChecked('q9')
+    },
+    {
+      header : '10. 솔루션 도입 시 가장 중요하게 고려하는 요소는 무엇인가요?',
+      getValue: () => getCheckedWithOther('q10', 'q10-other')
+    },
+    {
+      header : '11. 더존비즈온 솔루션에 대한 추가 안내를 받아보시겠습니까?',
+      getValue: () => document.querySelector('input[name="q11"]:checked')?.value || '-'
+    },
+    {
+      header : '12. 기타 의견 및 건의 사항',
+      getValue: () => document.getElementById('f-comment').value.trim() || '-'
+    }
+  ];
+
+  // ── 폼 제출 ──
+  async function submitSurvey(e) {
+    e.preventDefault();
+    if (!validateForm()) {
+      const firstErr = document.querySelector('.err-msg.show');
+      if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = '제출 중...';
+
+    // QUESTIONS 테이블에서 헤더·값 자동 수집
+    // → 질문 텍스트를 바꾸면 시트 헤더도 자동 반영
+    const payload = {
+      sheetName: SURVEY_SHEET_NAME,          // 저장될 탭 이름
+      headers:   QUESTIONS.map(q => q.header),
+      values:    QUESTIONS.map(q => q.getValue())
+    };
+
+    try {
+      if (SHEETS_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_DEPLOYMENT_URL') {
+        await fetch(SHEETS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(payload)
+        });
+      }
+      // 완료 화면
+      document.getElementById('survey-form').style.display = 'none';
+      document.getElementById('progress-wrap').style.display = 'none';
+      const ty = document.getElementById('thank-you');
+      ty.classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      console.error('Submit error:', err);
+      btn.disabled = false;
+      btn.textContent = '설문 제출하기 →';
+      alert('제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    }
+  }
+
+  // ── 초기화: 다음 응답자를 위해 폼 전체 리셋 ──
+  function resetSurvey() {
+    // 모든 텍스트 입력 초기화
+    document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea').forEach(function(el) {
+      el.value = '';
+    });
+
+    // 모든 라디오·체크박스 해제
+    document.querySelectorAll('input[type="radio"], input[type="checkbox"]').forEach(function(el) {
+      el.checked = false;
+      var item = el.closest('.option-item');
+      if (item) item.classList.remove('sel');
+    });
+
+    // 기타 입력란 숨기기
+    document.querySelectorAll('.other-input').forEach(function(el) {
+      el.style.display = 'none';
+      el.value = '';
+    });
+
+    // 조건부 블록 숨기기
+    document.querySelectorAll('.cond-block').forEach(function(el) {
+      el.classList.remove('show');
+    });
+
+    // 에러 메시지 숨기기
+    document.querySelectorAll('.err-msg').forEach(function(el) {
+      el.classList.remove('show');
+    });
+
+    // 동의 버튼 초기화
+    document.getElementById('btn-yes').className = 'consent-btn';
+    document.getElementById('btn-no').className  = 'consent-btn';
+    document.getElementById('consent-refused').style.display = 'none';
+
+    // 제출 버튼 복구
+    var btn = document.getElementById('submit-btn');
+    btn.disabled    = false;
+    btn.textContent = '설문 제출하기 →';
+
+    // 화면 전환: 감사 화면 숨기고 개인정보 동의 카드 노출
+    document.getElementById('thank-you').classList.remove('show');
+    document.getElementById('survey-form').style.display  = 'none';
+    document.getElementById('progress-wrap').style.display = 'none';
+
+    // 프로그레스바 초기화
+    document.getElementById('progress-bar').style.width = '0%';
+    document.getElementById('progress-pct').textContent = '0%';
+    document.getElementById('progress-text').textContent = '응답 진행 중';
+
+    // 브라우저 히스토리 교체 (뒤로가기로 이전 응답 접근 차단)
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, '', window.location.pathname);
+    }
+
+    // 맨 위로 스크롤
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>
