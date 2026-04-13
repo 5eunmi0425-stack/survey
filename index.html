@@ -986,14 +986,83 @@
         const none = document.getElementById('q7-none');
         none.checked = false; none.closest('.option-item').classList.remove('sel');
       }
-      const hasService = [...document.querySelectorAll('input[name="q7"]:checked')]
-        .some(c => c.value !== '없음');
+      const checked7 = [...document.querySelectorAll('input[name="q7"]:checked')];
+      const hasService = checked7.some(c => c.value !== '없음');
       document.getElementById('cond-q71').classList.toggle('show', hasService);
+
+      // 서비스 없을 때: 만족도 + 이유 블록 전체 초기화
+      if (!hasService) {
+        document.querySelectorAll('input[name="q71sat"]').forEach(r => {
+          r.checked = false; r.closest('.option-item').classList.remove('sel');
+        });
+        ['cond-q72-good','cond-q72-bad'].forEach(id => {
+          document.getElementById(id).classList.remove('show');
+        });
+        ['q72good','q72bad'].forEach(name => {
+          document.querySelectorAll(`input[name="${name}"]`).forEach(c => {
+            c.checked = false; c.closest('.option-item').classList.remove('sel');
+          });
+        });
+        ['q72good-other','q72bad-other'].forEach(id => {
+          document.getElementById(id).style.display = 'none';
+          document.getElementById(id).value = '';
+        });
+        document.getElementById('e-q71sat').classList.remove('show');
+      }
+
+      // Q7-3: CDW/데이터 플랫폼 선택 시 노출
+      const hasCDW = checked7.some(c => c.value === 'CDW/데이터 플랫폼 (임상데이터 수집·분석)');
+      document.getElementById('cond-q73').classList.toggle('show', hasCDW);
+      if (!hasCDW) {
+        document.querySelectorAll('input[name="q73"]').forEach(c => {
+          c.checked = false;
+          c.closest('.option-item').classList.remove('sel');
+        });
+        document.getElementById('q73-other').style.display = 'none';
+        document.getElementById('q73-other').value = '';
+        document.getElementById('e-q73').classList.remove('show');
+      }
     }
 
-    // Q7-1 기타
-    if (input.name === 'q71' && input.value === '기타')
-      document.getElementById('q71-other').style.display = input.checked ? 'block' : 'none';
+    // Q7-1 만족도 → 조건부 Q7-2 분기 (만족/불만족 이유)
+    if (input.name === 'q71sat') {
+      const satisfied   = (input.value === '매우 만족' || input.value === '만족');
+      const dissatisfied = (input.value === '불만족' || input.value === '매우 불만족');
+
+      document.getElementById('cond-q72-good').classList.toggle('show', satisfied);
+      if (!satisfied) {
+        document.querySelectorAll('input[name="q72good"]').forEach(c => {
+          c.checked = false; c.closest('.option-item').classList.remove('sel');
+        });
+        document.getElementById('q72good-other').style.display = 'none';
+        document.getElementById('q72good-other').value = '';
+      }
+
+      document.getElementById('cond-q72-bad').classList.toggle('show', dissatisfied);
+      if (!dissatisfied) {
+        document.querySelectorAll('input[name="q72bad"]').forEach(c => {
+          c.checked = false; c.closest('.option-item').classList.remove('sel');
+        });
+        document.getElementById('q72bad-other').style.display = 'none';
+        document.getElementById('q72bad-other').value = '';
+      }
+    }
+
+    // Q7-2A 만족 이유 기타
+    if (input.name === 'q72good' && input.value === '기타')
+      document.getElementById('q72good-other').style.display = input.checked ? 'block' : 'none';
+
+    // Q7-2B 불만족 이유 기타
+    if (input.name === 'q72bad' && input.value === '기타')
+      document.getElementById('q72bad-other').style.display = input.checked ? 'block' : 'none';
+
+    // Q7-3 CDW 기타
+    if (input.name === 'q73' && input.value === '기타')
+      document.getElementById('q73-other').style.display = input.checked ? 'block' : 'none';
+
+    // Q9-1 기타
+    if (input.name === 'q91' && input.value === '기타')
+      document.getElementById('q91-other').style.display = input.checked ? 'block' : 'none';
 
     // Q8: AI 활용 정도 → 조건부 Q8-1 / Q8-2 (둘 중 하나만 노출, 전환 시 반대쪽 초기화)
     if (input.name === 'q8') {
@@ -1049,8 +1118,21 @@
         document.getElementById('q83-other').style.display = input.checked ? 'block' : 'none';
     }
 
-    // Q9 최대 2개
-    if (input.name === 'q9') enforceMax('q9', 2, 'max-q9');
+    // Q9 최대 2개 + 조건부 Q9-1(CDW)
+    if (input.name === 'q9') {
+      enforceMax('q9', 2, 'max-q9');
+      const hasCDW9 = [...document.querySelectorAll('input[name="q9"]:checked')]
+        .some(c => c.value === 'CDW (임상데이터웨어하우스)');
+      document.getElementById('cond-q91').classList.toggle('show', hasCDW9);
+      if (!hasCDW9) {
+        document.querySelectorAll('input[name="q91"]').forEach(c => {
+          c.checked = false;
+          c.closest('.option-item').classList.remove('sel');
+        });
+        document.getElementById('q91-other').style.display = 'none';
+        document.getElementById('q91-other').value = '';
+      }
+    }
 
     // Q10 기타
     if (input.name === 'q10' && input.value === '기타')
