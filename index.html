@@ -589,11 +589,13 @@
         <div class="option-list" id="list-q7">
           <label class="option-item"><input type="checkbox" name="q7" value="CDW/데이터 플랫폼 (임상데이터 수집·분석)"><span class="option-label">CDW/데이터 플랫폼 (임상데이터 수집·분석)</span></label>
           <label class="option-item"><input type="checkbox" name="q7" value="BI/경영분석 대시보드"><span class="option-label">BI/경영분석 대시보드</span></label>
-          <label class="option-item"><input type="checkbox" name="q7" value="간호 인력관리/스케줄링 시스템"><span class="option-label">간호 인력관리/스케줄링 시스템</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="간호 인력관리/스케줄링 시스템"><span class="option-label">인력관리/스케줄링</span></label>
           <label class="option-item"><input type="checkbox" name="q7" value="IRB 연구심의 시스템"><span class="option-label">IRB(기관생명윤리위원회)</span></label>
           <label class="option-item"><input type="checkbox" name="q7" value="DRB 연구심의 시스템"><span class="option-label">DRB(데이터심의위원회)</span></label>
-          <label class="option-item"><input type="checkbox" name="q7" value="ERP/그룹웨어"><span class="option-label">ERP/그룹웨어</span></label>
-          <label class="option-item"><input type="checkbox" name="q7" value="없음" id="q7-none"><span class="option-label">없음 (사용 중인 서비스 없음)</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="CDSS(임상의사결정지원시스템)"><span class="option-label">CDSS(임상의사결정지원시스템)</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="데이터 분석 도구(통계, 머신러닝 등)"><span class="option-label">데이터 분석 도구(통계, 머신러닝 등)</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="데이터 처리/가공 도구(레이블링/가명화)"><span class="option-label">데이터 처리/가공 도구(레이블링/가명화)</span></label>
+          <label class="option-item"><input type="checkbox" name="q7" value="기타" id="q7-none"><span class="option-label">기타 (직접 입력)</span></label>
         </div>
         <div class="err-msg" id="e-q7">하나 이상 선택해 주세요.</div>
       </div>
@@ -604,11 +606,9 @@
           <div class="q-label">7-1. 현재 사용 중인 서비스에 대해 전반적으로 얼마나 만족하십니까? <span class="req">*</span></div>
           <div class="q-hint">현재 도입·운영 중인 서비스 전체를 기준으로 응답해 주세요</div>
           <div class="option-list" id="list-q71sat">
-            <label class="option-item"><input type="radio" name="q71sat" value="매우 만족"><span class="option-label">매우 만족</span></label>
             <label class="option-item"><input type="radio" name="q71sat" value="만족"><span class="option-label">만족</span></label>
             <label class="option-item"><input type="radio" name="q71sat" value="보통"><span class="option-label">보통</span></label>
             <label class="option-item"><input type="radio" name="q71sat" value="불만족"><span class="option-label">불만족</span></label>
-            <label class="option-item"><input type="radio" name="q71sat" value="매우 불만족"><span class="option-label">매우 불만족</span></label>
           </div>
           <div class="err-msg" id="e-q71sat">만족도를 선택해 주세요.</div>
         </div>
@@ -621,9 +621,10 @@
           <div class="option-list">
             <label class="option-item"><input type="checkbox" name="q72good" value="업무 요구사항을 충분히 충족하는 기능 제공"><span class="option-label">업무 요구사항을 충분히 충족하는 기능 제공</span></label>
             <label class="option-item"><input type="checkbox" name="q72good" value="타 시스템과의 연계가 원활함"><span class="option-label">타 시스템과의 연계가 원활함</span></label>
-            <label class="option-item"><input type="checkbox" name="q72good" value="사용이 편리하고 UI가 직관적임"><span class="option-label">사용이 편리하고 UI가 직관적임</span></label>
-            <label class="option-item"><input type="checkbox" name="q72good" value="시스템 안정성·성능이 우수함"><span class="option-label">시스템 안정성·성능이 우수함</span></label>
-            <label class="option-item"><input type="checkbox" name="q72good" value="충분한 교육·지원 서비스 제공"><span class="option-label">충분한 교육·지원 서비스 제공</span></label>
+            <label class="option-item"><input type="checkbox" name="q72good" value="편리하고 직관적인 사용자 인터페이스"><span class="option-label">편리하고 직관적인 사용자 인터페이스</span></label>
+            <label class="option-item"><input type="checkbox" name="q72good" value="우수한 시스템 안정성 및 성능"><span class="option-label">우수한 시스템 안정성 및 성능</span></label>
+            <label class="option-item"><input type="checkbox" name="q72good" value="통계/분석 기능 및 시각화 지원"><span class="option-label">통계/분석 기능 및 시각화 지원</span></label>
+            <label class="option-item"><input type="checkbox" name="q72good" value="체계적인 교육 및 지원 서비스 제공"><span class="option-label">체계적인 교육 및 지원 서비스 제공</span></label>
             <label class="option-item"><input type="checkbox" name="q72good" value="기타" id="q72good-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
           </div>
           <input type="text" class="other-input" id="q72good-other" placeholder="기타 만족 이유를 입력해 주세요">
@@ -635,12 +636,12 @@
         <div class="question">
           <div class="q-label">7-2. 불만족스러운 이유는 무엇인가요? <span style="font-weight:400;font-size:12px;color:#8898b3;">(복수 선택)</span></div>
           <div class="option-list">
-            <label class="option-item"><input type="checkbox" name="q72bad" value="UI/UX가 직관적이지 않음"><span class="option-label">UI/UX가 직관적이지 않음</span></label>
-            <label class="option-item"><input type="checkbox" name="q72bad" value="타 시스템(EMR, OCS 등)과의 연계 문제"><span class="option-label">타 시스템(EMR, OCS 등)과의 연계 문제</span></label>
-            <label class="option-item"><input type="checkbox" name="q72bad" value="데이터 입력·수작업이 많아 업무 효율 저하"><span class="option-label">데이터 입력·수작업이 많아 업무 효율 저하</span></label>
-            <label class="option-item"><input type="checkbox" name="q72bad" value="통계·분석 기능 부족 또는 시각화 미흡"><span class="option-label">통계·분석 기능 부족 또는 시각화 미흡</span></label>
-            <label class="option-item"><input type="checkbox" name="q72bad" value="사용자 교육·매뉴얼 부족"><span class="option-label">사용자 교육·매뉴얼 부족</span></label>
-            <label class="option-item"><input type="checkbox" name="q72bad" value="성능(속도, 안정성) 문제"><span class="option-label">성능(속도, 안정성) 문제</span></label>
+            <label class="option-item"><input type="checkbox" name="q72bad" value="데이터 입력/수작업이 많아 업무 효율 저하"><span class="option-label">데이터 입력/수작업이 많아 업무 효율 저하</span></label>
+            <label class="option-item"><input type="checkbox" name="q72bad" value="타 시스템과의 연계 미흡"><span class="option-label">타 시스템과의 연계 미흡</span></label>
+            <label class="option-item"><input type="checkbox" name="q72bad" value="직관적이지 않은 사용자 인터페이스"><span class="option-label">직관적이지 않은 사용자 인터페이스</span></label>
+            <label class="option-item"><input type="checkbox" name="q72bad" value="시스템 성능(속도/안정성) 저하"><span class="option-label">시스템 성능(속도/안정성) 저하</span></label>
+            <label class="option-item"><input type="checkbox" name="q72bad" value="통계/분석 기능 부족 및 시각화 미흡"><span class="option-label">통계/분석 기능 부족 및 시각화 미흡</span></label>
+            <label class="option-item"><input type="checkbox" name="q72bad" value="사용자 교육, 매뉴얼 부족"><span class="option-label">사용자 교육, 매뉴얼 부족</span></label>
             <label class="option-item"><input type="checkbox" name="q72bad" value="기타" id="q72bad-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
           </div>
           <input type="text" class="other-input" id="q72bad-other" placeholder="기타 불만족 이유를 입력해 주세요">
@@ -653,15 +654,11 @@
           <div class="q-label">7-3. CDW/데이터 플랫폼을 주로 어떤 목적으로 활용하고 계십니까? <span class="req">*</span></div>
           <div class="q-hint">복수 선택 가능</div>
           <div class="option-list">
-            <label class="option-item"><input type="checkbox" name="q73" value="다기관·다시스템 임상 데이터 수집 및 통합 관리"><span class="option-label">다기관·다시스템 임상 데이터 수집 및 통합 관리</span></label>
-            <label class="option-item"><input type="checkbox" name="q73" value="코호트 탐색 및 연구 대상자 선정 (조건 기반 필터링)"><span class="option-label">코호트 탐색 및 연구 대상자 선정 (조건 기반 필터링)</span></label>
-            <label class="option-item"><input type="checkbox" name="q73" value="데이터 탐색 및 생성"><span class="option-label">데이터 탐색 및 생성</span></label>
-            <label class="option-item"><input type="checkbox" name="q73" value="임상 데이터 통계·분석·시각화"><span class="option-label">임상 데이터 통계·분석·시각화</span></label>
-            <label class="option-item"><input type="checkbox" name="q73" value="연구과제 데이터 신청·승인·제공 관리"><span class="option-label">연구과제 데이터 신청·승인·제공 관리</span></label>
-            <label class="option-item"><input type="checkbox" name="q73" value="데이터 정제 (가명화/레이블링)"><span class="option-label">데이터 정제 (가명화/레이블링)</span></label>
-            <label class="option-item"><input type="checkbox" name="q73" value="연구과제 진행 관리/모니터링"><span class="option-label">연구과제 진행 관리/모니터링</span></label>
-            <label class="option-item"><input type="checkbox" name="q73" value="데이터 반출 처리"><span class="option-label">데이터 반출 처리</span></label>
-            <label class="option-item"><input type="checkbox" name="q73" value="프로그래밍 기반 자유 분석 환경 활용 (Jupyter, R 등)"><span class="option-label">프로그래밍 기반 자유 분석 환경 활용 (Jupyter, R 등)</span></label>
+            <label class="option-item"><input type="checkbox" name="q73" value="데이터 수집 및 통합 관리(멀티소스 통합)"><span class="option-label">데이터 수집 및 통합 관리(멀티소스 통합)</span></label>
+            <label class="option-item"><input type="checkbox" name="q73" value="데이터 및 연구 대상 탐색(코호트, 결합/조건)"><span class="option-label">데이터 및 연구 대상 탐색(코호트, 결합/조건)</span></label>
+            <label class="option-item"><input type="checkbox" name="q73" value="데이터 분석 및 활용(통계/분석/시각화 등)"><span class="option-label">데이터 분석 및 활용(통계/분석/시각화 등)</span></label>
+            <label class="option-item"><input type="checkbox" name="q73" value="연구 과제 관리 및 운영(신청-승인/모니터링)"><span class="option-label">연구 과제 관리 및 운영(신청-승인/모니터링)</span></label>
+            <label class="option-item"><input type="checkbox" name="q73" value="데이터 가공 및 연구 지원(기명화/레이블링)"><span class="option-label">데이터 가공 및 연구 지원(기명화/레이블링)</span></label>
             <label class="option-item"><input type="checkbox" name="q73" value="기타" id="q73-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
           </div>
           <input type="text" class="other-input" id="q73-other" placeholder="기타 활용 목적을 입력해 주세요">
@@ -682,11 +679,10 @@
       <div class="question">
         <div class="q-label">8. 현재 업무에서 AI 기반 서비스를 어느 정도 활용하고 계시나요? <span class="req">*</span></div>
         <div class="option-list" id="list-q8">
-          <label class="option-item"><input type="radio" name="q8" value="매우 적극적으로 활용"><span class="option-label">매우 적극적으로 활용하고 있다</span></label>
-          <label class="option-item"><input type="radio" name="q8" value="일부 제한적으로 활용"><span class="option-label">일부 업무에서 제한적으로 활용하고 있다</span></label>
-          <label class="option-item"><input type="radio" name="q8" value="도입했으나 활용 미미"><span class="option-label">도입은 했으나 실제 활용은 미미하다</span></label>
-          <label class="option-item"><input type="radio" name="q8" value="현재 미활용"><span class="option-label">현재 활용하고 있지 않다</span></label>
-          <label class="option-item"><input type="radio" name="q8" value="잘 모르겠다"><span class="option-label">잘 모르겠다 / 아직 검토 전이다</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="적극적으로 활용"><span class="option-label">적극적으로 활용</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="일부 업무에서 제한적으로 활용"><span class="option-label">일부 업무에서 제한적으로 활용</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="도입은 했으나 실제 활용은 미흡"><span class="option-label">도입은 했으나 실제 활용은 미흡</span></label>
+          <label class="option-item"><input type="radio" name="q8" value="미 도입 또는 검토 전 단계"><span class="option-label">미 도입 또는 검토 전 단계</span></label>
         </div>
         <div class="err-msg" id="e-q8">AI 활용 정도를 선택해 주세요.</div>
       </div>
@@ -711,12 +707,12 @@
         <div class="question">
           <div class="q-label">8-2. AI 서비스 도입·활용의 가장 큰 장애요인은 무엇인가요? <span style="font-weight:400;font-size:12px;color:#8898b3;">(복수 선택)</span></div>
           <div class="option-list">
-            <label class="option-item"><input type="checkbox" name="q82" value="보안·개인정보 이슈로 사용 제한"><span class="option-label">보안·개인정보 이슈로 사용이 제한됨</span></label>
-            <label class="option-item"><input type="checkbox" name="q82" value="기존 시스템과의 연동 어려움"><span class="option-label">기존 시스템과의 연동 어려움</span></label>
-            <label class="option-item"><input type="checkbox" name="q82" value="도입 효과에 대한 확신 부족"><span class="option-label">도입 효과에 대한 확신 부족</span></label>
-            <label class="option-item"><input type="checkbox" name="q82" value="AI 관련 내부 역량·인력 부족"><span class="option-label">AI 관련 내부 역량·인력 부족</span></label>
-            <label class="option-item"><input type="checkbox" name="q82" value="비용 및 예산 문제"><span class="option-label">비용 및 예산 문제</span></label>
-            <label class="option-item"><input type="checkbox" name="q82" value="기관 내부 승인 절차 복잡"><span class="option-label">기관 내부 승인 절차가 복잡함</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="개인정보·보안 이슈로 인한 활용 제한"><span class="option-label">개인정보·보안 이슈로 인한 활용 제한</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="기존 시스템과의 연계 및 통합 어려움"><span class="option-label">기존 시스템과의 연계 및 통합 어려움</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="도입 효과 및 투자대비 성과에 대한 불확실성"><span class="option-label">도입 효과 및 투자대비 성과에 대한 불확실성</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="AI 관련 내부 역량 및 인력 부족"><span class="option-label">AI 관련 내부 역량 및 인력 부족</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="비용 및 예산 부담"><span class="option-label">비용 및 예산 부담</span></label>
+            <label class="option-item"><input type="checkbox" name="q82" value="내부 의사결정 및 승인 절차 복잡성"><span class="option-label">내부 의사결정 및 승인 절차 복잡성</span></label>
             <label class="option-item"><input type="checkbox" name="q82" value="기타" id="q82-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
           </div>
           <input type="text" class="other-input" id="q82-other" placeholder="기타 장애요인을 입력해 주세요">
@@ -733,8 +729,8 @@
           <label class="option-item"><input type="checkbox" name="q83" value="반복 업무 자동화로 업무 효율 향상"><span class="option-label">반복 업무 자동화로 업무 효율 향상</span></label>
           <label class="option-item"><input type="checkbox" name="q83" value="데이터 기반 의사결정 지원"><span class="option-label">데이터 기반 의사결정 지원</span></label>
           <label class="option-item"><input type="checkbox" name="q83" value="임상·연구 품질 향상"><span class="option-label">임상·연구 품질 향상</span></label>
-          <label class="option-item"><input type="checkbox" name="q83" value="인력 운영 최적화"><span class="option-label">인력 운영 최적화</span></label>
-          <label class="option-item"><input type="checkbox" name="q83" value="환자 서비스 개선"><span class="option-label">환자 서비스 개선</span></label>
+          <label class="option-item"><input type="checkbox" name="q83" value="인력 운영 및 자원 최적화"><span class="option-label">인력 운영 및 자원 최적화</span></label>
+          <label class="option-item"><input type="checkbox" name="q83" value="환자 서비스 및 경험 개선"><span class="option-label">환자 서비스 및 경험 개선</span></label>
           <label class="option-item"><input type="checkbox" name="q83" value="기타" id="q83-other-chk"><span class="option-label">기타 (직접 입력)</span></label>
         </div>
         <input type="text" class="other-input" id="q83-other" placeholder="기타 기대 효과를 입력해 주세요">
